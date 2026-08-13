@@ -38,8 +38,8 @@
 6. 发布位于版本目录，`current` 为可原子恢复的软链接。
 7. 使用 `Host: skill.zaowuyun.com` 访问目标服务器返回新站。
 8. DNS 未指向目标服务器时不得尝试签发证书。
+9. systemd 沙箱必须与 Node/V8 兼容；禁止使用会阻断 JIT 可执行内存的 `MemoryDenyWriteExecute`。
 
 ## 回滚
 
 记录发布前 `current` 指向；若健康检查、Nginx 检查或 Host 验收失败，将 `current` 恢复至旧版本，重启服务并复测。首次发布没有旧版本时，停用服务并移除本次 Nginx enabled 链接。
-

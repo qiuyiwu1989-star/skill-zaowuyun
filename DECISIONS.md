@@ -21,3 +21,9 @@
 - 决策：生产目录默认为空，只接受已通过 Registry Release 门禁的数据。
 - 原因：本地演示数据不能代表真实许可、安全、Eval 与双人终审状态。
 
+## D-004：Node 服务不启用 MemoryDenyWriteExecute
+
+- 状态：已决定
+- 日期：2026-08-13
+- 决策：保留 systemd 的只读文件系统、无提权、空 capability 等沙箱，但不启用 `MemoryDenyWriteExecute`。
+- 原因：Node.js 的 V8 运行时需要为 JIT 代码分配可执行内存；该选项会令服务在启动后触发 V8 致命错误。

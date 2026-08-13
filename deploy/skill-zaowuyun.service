@@ -20,7 +20,6 @@ ProtectSystem=strict
 ProtectHome=true
 CapabilityBoundingSet=
 LockPersonality=true
-MemoryDenyWriteExecute=true
 RestrictAddressFamilies=AF_INET AF_INET6 AF_UNIX
 SystemCallArchitectures=native
 
