@@ -8,6 +8,7 @@ User=www-data
 Group=www-data
 WorkingDirectory=/opt/skill-zaowuyun/current
 Environment=NODE_ENV=production
+Environment=APP_VERSION=0e40d5e
 Environment=HOST=127.0.0.1
 Environment=PORT=4310
 EnvironmentFile=-/etc/skill-zaowuyun.env

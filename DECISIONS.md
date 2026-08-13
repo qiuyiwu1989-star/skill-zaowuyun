@@ -27,3 +27,10 @@
 - 日期：2026-08-13
 - 决策：保留 systemd 的只读文件系统、无提权、空 capability 等沙箱，但不启用 `MemoryDenyWriteExecute`。
 - 原因：Node.js 的 V8 运行时需要为 JIT 代码分配可执行内存；该选项会令服务在启动后触发 V8 致命错误。
+
+## D-005：HTTPS 配置纳入仓库
+
+- 状态：已决定
+- 日期：2026-08-13
+- 决策：证书签发后使用 `nginx-https.conf`，HTTP 永久跳转到 HTTPS，并启用一年期 HSTS；证书私钥与 ACME 账户不进入仓库。
+- 原因：避免后续从仓库部署时重新覆盖为 HTTP-only 配置，同时保持证书材料只由服务器和 Certbot 管理。
