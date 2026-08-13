@@ -1,88 +1,190 @@
 <!doctype html>
-<html lang="zh-CN">
+<html lang="zh-CN" data-theme="light">
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="造物云可信技能市场：发现、评估、验证并治理可复用的 AI 技能。">
-  <title>造物云 · 可信技能市场</title>
+  <meta name="description" content="造物云技能市场：按任务发现经过来源、安全、评估与终审的企业级 AI 技能。">
+  <meta name="theme-color" content="#F4F5F8">
+  <title>造物云技能市场｜发现可信的 AI 技能</title>
+  <link rel="icon" href="/assets/zaowuyun-mark-color.svg" type="image/svg+xml">
   <link rel="stylesheet" href="/styles.css">
   <script type="module" src="/app.js"></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">跳到技能目录</a>
+
   <header class="site-header">
-    <a class="brand" href="/" aria-label="造物云技能市场首页">
-      <span class="brand-mark" aria-hidden="true">造</span>
-      <span>造物云</span>
-      <span class="brand-sub">可信技能市场</span>
-    </a>
-    <nav aria-label="主导航">
-      <a href="#catalog">发现技能</a>
-      <a href="#trust">可信准入</a>
-      <a href="#about">平台定位</a>
-    </nav>
-    <span class="environment">生产基础版</span>
+    <div class="nav-shell">
+      <a class="brand" href="/" aria-label="造物云技能市场首页">
+        <img src="/assets/zaowuyun-mark-color.svg" width="34" height="34" alt="">
+        <span class="brand-name">造物云</span>
+        <span class="brand-divider" aria-hidden="true"></span>
+        <span class="brand-product">技能市场</span>
+      </a>
+      <nav aria-label="主导航">
+        <a href="#catalog">能力市场</a>
+        <a href="#categories">场景分类</a>
+        <a href="#trust">可信准入</a>
+        <a href="#publish">发布技能</a>
+      </nav>
+      <div class="nav-actions">
+        <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅主题" aria-pressed="false">
+          <span class="theme-toggle-label">深色</span>
+        </button>
+        <a class="button button-primary nav-cta" href="https://www.zaowuyun.com/">进入造物云</a>
+      </div>
+    </div>
   </header>
 
   <main>
     <section class="hero" aria-labelledby="hero-title">
-      <div class="eyebrow">SkillOps × 造物云能力市场</div>
-      <h1 id="hero-title">让每一个 AI 技能，<br>都能被理解、验证与持续治理。</h1>
-      <p class="hero-copy">这里不是技能链接的简单集合。每项公开能力都需要经过来源追溯、许可与安全审计、SMS 静态潜力评估、Eval 运行实证和独立人类终审。</p>
-      <div class="hero-actions">
-        <a class="button button-primary" href="#catalog">浏览可信技能</a>
-        <a class="button" href="#trust">了解准入标准</a>
-      </div>
-      <dl class="hero-stats" aria-label="市场原则">
-        <div><dt>6</dt><dd>道可信门禁</dd></div>
-        <div><dt>100%</dt><dd>版本证据绑定</dd></div>
-        <div><dt>0</dt><dd>未审核自动上架</dd></div>
-      </dl>
-    </section>
-
-    <section class="trust-strip" id="trust" aria-labelledby="trust-title">
-      <div>
-        <span class="section-index">01</span>
-        <h2 id="trust-title">公开之前，先通过可信准入</h2>
-      </div>
-      <ol class="gates">
-        <li><span>01</span>来源与版本</li>
-        <li><span>02</span>许可与安全</li>
-        <li><span>03</span>完整技能包</li>
-        <li><span>04</span>SMS 静态潜力</li>
-        <li><span>05</span>Eval 运行实证</li>
-        <li><span>06</span>双人独立终审</li>
-      </ol>
-    </section>
-
-    <section class="catalog" id="catalog" aria-labelledby="catalog-title">
-      <div class="section-heading">
-        <div>
-          <span class="section-index">02</span>
-          <h2 id="catalog-title">可信技能目录</h2>
-          <p>仅展示证据当前且已形成 Registry Release 的能力。</p>
+      <div class="hero-glow" aria-hidden="true"></div>
+      <div class="hero-shell">
+        <div class="hero-copy-block">
+          <p class="eyebrow">企业 AI 能力市场</p>
+          <h1 id="hero-title">找到可信、可评估、可治理的 AI 技能</h1>
+          <p class="hero-copy">从业务任务出发，选择证据清楚、版本固定、可以持续运营的能力。</p>
+          <form class="hero-search" id="hero-search" role="search">
+            <label class="sr-only" for="hero-search-input">搜索技能名称、场景或能力</label>
+            <input id="hero-search-input" name="keyword" type="search" autocomplete="off" placeholder="搜索技能名称、业务场景或关键词">
+            <button class="button button-primary" type="submit">搜索技能</button>
+          </form>
         </div>
-        <div class="catalog-status" id="catalog-status" aria-live="polite">正在验证目录…</div>
+        <aside class="hero-aside" aria-label="市场可信状态">
+          <p class="aside-title">市场只发布通过门禁的版本</p>
+          <dl class="hero-metrics">
+            <div>
+              <dt id="release-count">0</dt>
+              <dd>正式发布</dd>
+            </div>
+            <div>
+              <dt>6</dt>
+              <dd>道可信门禁</dd>
+            </div>
+            <div>
+              <dt>3</dt>
+              <dd>首批候选评估中</dd>
+            </div>
+          </dl>
+          <p class="hero-policy">未经完整包、安全、SMS、Eval 与双人终审的技能，不会标记为可安装。</p>
+        </aside>
       </div>
-      <div id="catalog-content" class="catalog-grid" aria-live="polite"></div>
     </section>
 
-    <section class="about" id="about" aria-labelledby="about-title">
-      <div>
-        <span class="section-index">03</span>
-        <h2 id="about-title">能力市场在前，技能人事部在后</h2>
+    <section class="market-section" id="catalog" aria-labelledby="catalog-title">
+      <div class="section-shell">
+        <div class="section-heading">
+          <p class="eyebrow">能力市场</p>
+          <h2 id="catalog-title">按任务选择技能</h2>
+          <p>像选择企业软件一样，先看场景，再看证据和适用边界。</p>
+        </div>
+
+        <div class="market-layout">
+          <aside class="category-panel" id="categories" aria-label="技能场景分类">
+            <div class="panel-heading">
+              <h3>场景分类</h3>
+              <span id="category-total">0 项</span>
+            </div>
+            <div class="category-list" id="category-list"></div>
+            <div class="category-note">
+              <strong>没有找到合适能力？</strong>
+              <p>提交业务任务，我们会将需求纳入技能征集与评估计划。</p>
+              <a href="#publish">了解如何提交</a>
+            </div>
+          </aside>
+
+          <div class="catalog-main">
+            <div class="catalog-toolbar">
+              <label class="catalog-search" for="catalog-search-input">
+                <span class="sr-only">搜索技能</span>
+                <input id="catalog-search-input" type="search" autocomplete="off" placeholder="搜索技能名称、描述或标签">
+              </label>
+              <div class="toolbar-group" aria-label="技能筛选">
+                <label>
+                  <span class="sr-only">分发状态</span>
+                  <select id="distribution-filter">
+                    <option value="all">全部状态</option>
+                    <option value="installable">可安装</option>
+                    <option value="source_only">仅来源</option>
+                  </select>
+                </label>
+                <label>
+                  <span class="sr-only">排序方式</span>
+                  <select id="sort-select">
+                    <option value="recommended">推荐排序</option>
+                    <option value="sms">SMS 评分</option>
+                    <option value="recent">最近发布</option>
+                  </select>
+                </label>
+              </div>
+            </div>
+
+            <div class="result-summary" aria-live="polite">
+              <strong id="catalog-status">正在验证目录</strong>
+              <span id="filter-summary">仅展示证据当前的公开 Release</span>
+            </div>
+            <div id="catalog-content" class="catalog-grid" aria-live="polite" aria-busy="true">
+              <div class="loading-state" role="status">
+                <span class="loading-line"></span>
+                <span class="loading-line short"></span>
+                <span class="loading-line"></span>
+              </div>
+            </div>
+          </div>
+        </div>
       </div>
-      <div class="about-copy">
-        <p>对外，造物云帮助用户按任务找到可信能力；对内，SkillOps 像“技能人事部”一样完成入库、评估、考核、编制、运营与退役。</p>
-        <p>技能、插件、方法应用和数字员工保持各自产品形态，通过稳定 Release 和关系图谱协作，而不是被压成同一种对象。</p>
+    </section>
+
+    <section class="trust-section" id="trust" aria-labelledby="trust-title">
+      <div class="section-shell trust-layout">
+        <div class="trust-intro">
+          <p class="eyebrow">可信准入</p>
+          <h2 id="trust-title">每一个“可安装”，都有完整证据链</h2>
+          <p>平台不把热度当质量，也不把单次审核当永久结论。内容、版本或证据发生变化时，发布状态会自动失效并重新评估。</p>
+          <a class="text-link" href="https://skillops.tech/design-system/">查看 SkillOps 评估设计</a>
+        </div>
+        <ol class="gate-list">
+          <li><span>来源可追溯</span><p>固定仓库、路径、提交与内容指纹。</p></li>
+          <li><span>许可可判断</span><p>明确可分发范围，不确定时只保留来源。</p></li>
+          <li><span>完整包安全</span><p>扫描脚本、引用与资产，不只检查说明文件。</p></li>
+          <li><span>SMS 静态评估</span><p>用十个维度判断技能的结构与复用潜力。</p></li>
+          <li><span>Eval 运行实证</span><p>结果绑定技能包、测试集与运行环境。</p></li>
+          <li><span>双人独立终审</span><p>两个不同的可信身份基于同一证据终审。</p></li>
+        </ol>
+      </div>
+    </section>
+
+    <section class="publish-section" id="publish" aria-labelledby="publish-title">
+      <div class="section-shell publish-layout">
+        <div class="publish-copy">
+          <p class="eyebrow">技能供给</p>
+          <h2 id="publish-title">把技能提交到造物云</h2>
+          <p>当前采用审核制。平台先采集来源与完整技能包，再进入评估、终审和正式发布。</p>
+          <a class="button button-primary" href="mailto:contact@zaowuyun.com?subject=%E7%94%B3%E8%AF%B7%E5%8F%91%E5%B8%83%E9%80%A0%E7%89%A9%E4%BA%91%E6%8A%80%E8%83%BD">申请发布技能</a>
+        </div>
+        <div class="publish-flow" aria-label="技能发布流程">
+          <article><strong>提交来源</strong><p>提供仓库、版本、许可与技能说明。</p></article>
+          <article><strong>安全采集</strong><p>固定版本并校验完整包和每个文件。</p></article>
+          <article><strong>评估终审</strong><p>完成 SMS、Eval 和双人独立终审。</p></article>
+          <article><strong>形成 Release</strong><p>通过后进入 Registry 并公开上架。</p></article>
+        </div>
       </div>
     </section>
   </main>
 
   <footer>
-    <p>© 2026 造物云 · 可信技能市场</p>
-    <p>当前站点不执行第三方技能，不收集用户输入。</p>
+    <div class="footer-shell">
+      <a class="brand footer-brand" href="/">
+        <img src="/assets/zaowuyun-mark-color.svg" width="30" height="30" alt="">
+        <span>造物云技能市场</span>
+      </a>
+      <p>把 AI 技能从文件，变成可理解、可验证、可治理的企业能力。</p>
+      <div class="footer-links">
+        <a href="https://www.zaowuyun.com/">造物云</a>
+        <a href="https://www.zaowuyun.com/design-system.html">设计系统</a>
+        <a href="#trust">可信准入</a>
+      </div>
+    </div>
   </footer>
 </body>
 </html>
-
