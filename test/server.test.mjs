@@ -9,6 +9,7 @@ async function fixture(catalog = { schemaVersion: 1, generatedAt: null, listings
   const root = await mkdtemp(path.join(os.tmpdir(), 'skill-zaowuyun-'));
   await mkdir(path.join(root, 'data'));
   await writeFile(path.join(root, 'index.html'), '<h1>造物云</h1>');
+  await writeFile(path.join(root, 'skill.html'), '<h1>技能详情</h1>');
   await writeFile(path.join(root, 'data/listings.json'), JSON.stringify(catalog));
   return root;
 }
@@ -47,6 +48,36 @@ test('catalog endpoint only returns a fixed valid public schema', async () => {
   });
 });
 
+test('tiered catalog accepts safe callable entries and rejects misleading installation', async () => {
+  const listing = {
+    skillId: 'qiuyiwu/example-skill', slug: 'example-skill', titleZh: '示例技能', originalName: 'example-skill',
+    descriptionZh: '用于验证公开目录契约。', category: '产品与研发', tags: ['需求分析'], version: 'abcdef0',
+    stage: 'callable', distribution: 'source_only',
+    license: { status: 'owner_authorized_use', label: '允许平台调用，分发授权待补齐' },
+    trust: { packageAudit: 'pass', smsScore: 60, smsTier: 'C', evalStatus: 'pending', reviewStatus: 'pending' },
+    invocation: { mode: 'copy_text', text: '请使用示例技能处理下面的任务：', examples: ['整理这个需求'] },
+    source: { label: '造物云自有技能', revision: 'abcdef0' },
+    install: { eligible: false, reason: 'redistribution_license_pending' }
+  };
+  await withServer(await fixture({ schemaVersion: 1, generatedAt: '2026-08-14T00:00:00.000Z', listings: [listing] }), async (base) => {
+    const response = await fetch(`${base}/api/v1/catalog`);
+    assert.equal(response.status, 200);
+    assert.equal((await response.json()).listings[0].stage, 'callable');
+  });
+
+  const misleading = structuredClone(listing);
+  misleading.install.eligible = true;
+  await withServer(await fixture({ schemaVersion: 1, generatedAt: null, listings: [misleading] }), async (base) => {
+    assert.equal((await fetch(`${base}/readyz`)).status, 503);
+  });
+
+  const fakeCertification = structuredClone(listing);
+  fakeCertification.stage = 'certified';
+  await withServer(await fixture({ schemaVersion: 1, generatedAt: null, listings: [fakeCertification] }), async (base) => {
+    assert.equal((await fetch(`${base}/readyz`)).status, 503);
+  });
+});
+
 test('static delivery supports GET and HEAD and blocks mutation methods', async () => {
   await withServer(await fixture(), async (base) => {
     const page = await fetch(`${base}/`);
@@ -60,6 +91,10 @@ test('static delivery supports GET and HEAD and blocks mutation methods', async 
 
     const post = await fetch(`${base}/api/v1/catalog`, { method: 'POST' });
     assert.equal(post.status, 405);
+
+    const detail = await fetch(`${base}/skills/example-skill/`);
+    assert.equal(detail.status, 200);
+    assert.match(await detail.text(), /技能详情/);
   });
 });
 

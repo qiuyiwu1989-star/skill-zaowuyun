@@ -1,6 +1,114 @@
 {
   "schemaVersion": 1,
-  "generatedAt": null,
-  "listings": []
+  "generatedAt": "2026-08-14T00:00:00.000Z",
+  "listings": [
+    {
+      "skillId": "qiuyiwu/xuqiu-jianbao",
+      "slug": "xuqiu-jianbao",
+      "titleZh": "需求简报器",
+      "originalName": "xuqiu-jianbao",
+      "descriptionZh": "把一句话的产品想法压成一份可执行的迷你简报，明确意图、验收标准、不做什么和授权范围，再进入开发。",
+      "category": "产品与研发",
+      "tags": ["需求分析", "产品管理", "Vibe Coding"],
+      "version": "348ff1c",
+      "stage": "callable",
+      "distribution": "source_only",
+      "license": {
+        "status": "owner_authorized_use",
+        "label": "允许平台调用，技能包分发授权待补齐"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 61,
+        "smsTier": "C",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用需求简报器，把下面的想法整理成一份可执行的需求简报：",
+        "examples": ["帮我做一个新的企业技能市场", "这个页面体验不好，先帮我整理需求"]
+      },
+      "source": {
+        "label": "造物云自有技能",
+        "revision": "348ff1c"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "redistribution_license_pending"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/shengchan-shigu-kuaizhen",
+      "slug": "shengchan-shigu-kuaizhen",
+      "titleZh": "生产事故快诊",
+      "originalName": "shengchan-shigu-kuaizhen",
+      "descriptionZh": "用于 502、打不开、响应变慢和服务器异常等场景，先从公网证据开始，分层定位 DNS、TLS、服务和资源问题。",
+      "category": "研发运维",
+      "tags": ["故障诊断", "服务器", "可观测性"],
+      "version": "348ff1c",
+      "stage": "callable",
+      "distribution": "source_only",
+      "license": {
+        "status": "owner_authorized_use",
+        "label": "允许平台调用，技能包分发授权待补齐"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 56,
+        "smsTier": "C",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用生产事故快诊，按公网侧优先、证据优先的方式诊断下面的问题：",
+        "examples": ["网站突然出现 502，帮我定位", "服务器今天特别慢，应该先查什么"]
+      },
+      "source": {
+        "label": "造物云自有技能",
+        "revision": "348ff1c"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "redistribution_license_pending"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/panduanku-jiagou",
+      "slug": "panduanku-jiagou",
+      "titleZh": "判断库架构",
+      "originalName": "panduanku-jiagou",
+      "descriptionZh": "把只会存笔记和记录的系统升级为可追问、可推翻、可兑现的判断系统，适合知识库、AI 记忆和决策支持场景。",
+      "category": "数据与知识",
+      "tags": ["知识库", "AI 记忆", "决策系统"],
+      "version": "348ff1c",
+      "stage": "callable",
+      "distribution": "source_only",
+      "license": {
+        "status": "owner_authorized_use",
+        "label": "允许平台调用，技能包分发授权待补齐"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 66,
+        "smsTier": "B",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用判断库架构，诊断下面这个知识或记忆系统，并给出迁移计划：",
+        "examples": ["知识库能搜到原文但用不上", "AI 总是记错是谁说的，怎么改架构"]
+      },
+      "source": {
+        "label": "造物云自有技能",
+        "revision": "348ff1c"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "redistribution_license_pending"
+      }
+    }
+  ]
 }
-

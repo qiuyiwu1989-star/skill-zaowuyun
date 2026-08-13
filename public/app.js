@@ -7,6 +7,8 @@ const elements = {
   filterSummary: document.querySelector('#filter-summary'),
   heroForm: document.querySelector('#hero-search'),
   heroInput: document.querySelector('#hero-search-input'),
+  callableCount: document.querySelector('#callable-count'),
+  certifiedCount: document.querySelector('#certified-count'),
   releaseCount: document.querySelector('#release-count'),
   searchInput: document.querySelector('#catalog-search-input'),
   sort: document.querySelector('#sort-select'),
@@ -15,13 +17,13 @@ const elements = {
 
 const state = {
   category: '全部技能',
-  distribution: 'all',
+  stage: 'all',
   keyword: '',
   listings: [],
   sort: 'recommended'
 };
 
-const fallbackCategories = ['全部技能', '办公效率', '内容创作', '研发运维', '数据与知识', '设计与媒体'];
+const fallbackCategories = ['全部技能', '产品与研发', '办公效率', '内容创作', '研发运维', '数据与知识'];
 
 function safeText(value) {
   return typeof value === 'string' ? value.trim() : '';
@@ -49,23 +51,34 @@ function normalizeListing(listing) {
   const install = listing?.install && typeof listing.install === 'object' ? listing.install : {};
   const sms = listing?.sms && typeof listing.sms === 'object' ? listing.sms : {};
   const evaluation = listing?.eval && typeof listing.eval === 'object' ? listing.eval : {};
+  const trust = listing?.trust && typeof listing.trust === 'object' ? listing.trust : {};
+  const invocation = listing?.invocation && typeof listing.invocation === 'object' ? listing.invocation : {};
+  const license = listing?.license && typeof listing.license === 'object' ? listing.license : {};
   const source = listing?.source && typeof listing.source === 'object' ? listing.source : {};
   const title = safeText(listing?.titleZh) || safeText(metadata.titleZh) || safeText(listing?.name) || '未命名技能';
-  const originalName = safeText(listing?.name) || safeText(metadata.originalName);
+  const originalName = safeText(listing?.originalName) || safeText(listing?.name) || safeText(metadata.originalName);
   const description = safeText(listing?.descriptionZh) || safeText(metadata.descriptionZh) || '已通过造物云可信准入的技能。';
   const category = safeText(listing?.category) || safeText(catalog.category) || '其他能力';
   const tags = Array.isArray(listing?.tags) ? listing.tags.map(safeText).filter(Boolean) : [];
   const installable = install.eligible === true;
+  const slug = safeText(listing?.slug);
+  const stage = ['indexed', 'callable', 'certified'].includes(listing?.stage) ? listing.stage : (installable ? 'certified' : 'indexed');
   return {
     category,
     description,
-    detailUrl: safeUrl(listing?.canonicalUrl) || safeUrl(listing?.detailUrl),
+    detailUrl: slug ? `/skills/${slug}/` : safeUrl(listing?.canonicalUrl) || safeUrl(listing?.detailUrl),
     evalRate: number(evaluation.successRate),
+    evalStatus: safeText(trust.evalStatus) || (evaluation.successRate ? 'pass' : 'pending'),
     installable,
+    invocationText: safeText(invocation.text),
+    licenseLabel: safeText(license.label),
     originalName,
     publishedAt: safeText(catalog.publishedAt) || safeText(listing?.publishedAt),
-    smsScore: number(sms.total ?? sms.score),
+    reviewStatus: safeText(trust.reviewStatus) || 'pending',
+    smsScore: number(trust.smsScore ?? sms.total ?? sms.score),
+    smsTier: safeText(trust.smsTier),
     sourceUrl: safeUrl(source.url) || safeUrl(source.upstreamUrl),
+    stage,
     tags,
     title,
     version: safeText(listing?.version) || '固定版本'
@@ -79,8 +92,7 @@ function matches(listing) {
     .toLocaleLowerCase('zh-CN');
   if (keyword && !haystack.includes(keyword)) return false;
   if (state.category !== '全部技能' && listing.category !== state.category) return false;
-  if (state.distribution === 'installable' && !listing.installable) return false;
-  if (state.distribution === 'source_only' && listing.installable) return false;
+  if (state.stage !== 'all' && listing.stage !== state.stage) return false;
   return true;
 }
 
@@ -98,11 +110,30 @@ function createElement(tag, className, text) {
   return element;
 }
 
+async function copyInvocation(button, text) {
+  if (!text) return;
+  button.textContent = '已复制，可去调用';
+  button.dataset.copied = 'true';
+  try {
+    await navigator.clipboard.writeText(text);
+  } catch {
+    const textarea = document.createElement('textarea');
+    textarea.value = text;
+    textarea.setAttribute('readonly', '');
+    textarea.className = 'clipboard-fallback';
+    document.body.append(textarea);
+    textarea.select();
+    document.execCommand('copy');
+    textarea.remove();
+  }
+  button.setAttribute('aria-label', '调用词已复制');
+}
+
 function renderEmpty() {
   const article = createElement('article', 'empty-state');
   const copy = createElement('div', 'empty-copy');
-  const title = createElement('h3', '', '首批技能正在完成发布前评估');
-  const description = createElement('p', '', '正式目录目前为空。首批候选正在完成 Eval 实证与双人独立终审，通过后才会形成可公开的 Registry Release。');
+  const title = createElement('h3', '', '新的技能正在进入市场');
+  const description = createElement('p', '', '平台会先开放安全、清晰的技能说明和调用方式，再逐步补齐安装与企业认证证据。');
   const actions = createElement('div', 'empty-actions');
   const trustLink = createElement('a', 'button button-primary', '查看可信准入');
   trustLink.href = '#trust';
@@ -114,8 +145,8 @@ function renderEmpty() {
   const pipeline = createElement('div', 'pipeline-summary');
   pipeline.append(
     createElement('strong', '', '3'),
-    createElement('span', '', '项首批候选处于评估流程'),
-    createElement('p', '', '当前均不可安装，也不计入正式目录')
+    createElement('span', '', '层市场状态保持独立'),
+    createElement('p', '', '已收录、可调用和企业认证不会混为一谈')
   );
   article.append(copy, pipeline);
   elements.catalogContent.replaceChildren(article);
@@ -133,33 +164,33 @@ function renderNoResults() {
 function createSkillCard(listing) {
   const article = createElement('article', 'skill-card');
   const topline = createElement('div', 'card-topline');
+  const stageLabel = listing.stage === 'certified' ? '企业认证' : listing.stage === 'callable' ? '可快速调用' : '已收录';
   topline.append(
     createElement('span', 'skill-category', listing.category),
-    createElement('span', listing.installable ? 'trust-badge' : 'distribution-badge', listing.installable ? '可安装' : '仅来源')
+    createElement('span', listing.stage === 'certified' ? 'trust-badge' : 'distribution-badge', stageLabel)
   );
 
   const title = createElement('h3', '', listing.title);
-  const original = createElement('p', 'skill-original', listing.originalName && listing.originalName !== listing.title ? listing.originalName : '造物云可信技能');
+  const original = createElement('p', 'skill-original', listing.originalName && listing.originalName !== listing.title ? listing.originalName : '造物云自有技能');
   const description = createElement('p', 'skill-description', listing.description);
 
   const evidence = createElement('div', 'card-evidence');
   const sms = createElement('div', 'evidence-item');
-  sms.append(createElement('span', '', 'SMS 静态潜力'), createElement('strong', '', listing.smsScore ? `${listing.smsScore} 分` : '已验证'));
+  sms.append(createElement('span', '', 'SMS 静态潜力'), createElement('strong', '', listing.smsScore ? `${listing.smsScore} 分 · ${listing.smsTier || '待评级'}` : '待评估'));
   const evaluation = createElement('div', 'evidence-item');
-  evaluation.append(createElement('span', '', 'Eval 运行实绩'), createElement('strong', '', listing.evalRate ? `${Math.round(listing.evalRate * 100)}%` : '已绑定'));
+  evaluation.append(createElement('span', '', 'Eval 运行实绩'), createElement('strong', '', listing.evalStatus === 'pass' ? `${Math.round(listing.evalRate * 100)}%` : '待实证'));
   const review = createElement('div', 'evidence-item');
-  review.append(createElement('span', '', '人类终审'), createElement('strong', '', '双人通过'));
+  review.append(createElement('span', '', '使用边界'), createElement('strong', '', listing.installable ? '可安装' : '调用词'));
   evidence.append(sms, evaluation, review);
 
   const footer = createElement('div', 'card-footer');
-  footer.append(createElement('span', 'card-version', listing.version));
-  const link = createElement('a', 'card-link', listing.detailUrl ? '查看详情' : '查看来源');
-  link.href = listing.detailUrl || listing.sourceUrl || '#trust';
-  if (link.href.startsWith('http')) {
-    link.target = '_blank';
-    link.rel = 'noopener noreferrer';
-  }
-  footer.append(link);
+  const invoke = createElement('button', 'button button-primary card-invoke', '复制调用词');
+  invoke.type = 'button';
+  invoke.disabled = !listing.invocationText;
+  invoke.addEventListener('click', () => copyInvocation(invoke, listing.invocationText));
+  const link = createElement('a', 'button card-detail', '查看详情');
+  link.href = listing.detailUrl || '#trust';
+  footer.append(invoke, link);
   article.append(topline, title, original, description, evidence, footer);
   return article;
 }
@@ -187,12 +218,12 @@ function renderCategories() {
 function render() {
   renderCategories();
   const filtered = sortListings(state.listings.filter(matches));
-  elements.catalogStatus.textContent = `${filtered.length} 项已验证能力`;
+  elements.catalogStatus.textContent = `${filtered.length} 项可用能力`;
   const filters = [];
   if (state.category !== '全部技能') filters.push(state.category);
   if (state.keyword) filters.push(`关键词“${state.keyword}”`);
-  if (state.distribution !== 'all') filters.push(state.distribution === 'installable' ? '可安装' : '仅来源');
-  elements.filterSummary.textContent = filters.length ? `当前筛选：${filters.join('，')}` : '仅展示证据当前的公开 Release';
+  if (state.stage !== 'all') filters.push(state.stage === 'certified' ? '企业认证' : state.stage === 'callable' ? '可快速调用' : '已收录');
+  elements.filterSummary.textContent = filters.length ? `当前筛选：${filters.join('，')}` : '收录、调用与安装分层展示，状态不混淆';
   elements.catalogContent.setAttribute('aria-busy', 'false');
   if (state.listings.length === 0) renderEmpty();
   else if (filtered.length === 0) renderNoResults();
@@ -207,6 +238,8 @@ async function loadCatalog() {
     if (catalog.schemaVersion !== 1 || !Array.isArray(catalog.listings)) throw new Error('catalog invalid');
     state.listings = catalog.listings.map(normalizeListing);
     elements.releaseCount.textContent = String(state.listings.length);
+    elements.callableCount.textContent = String(state.listings.filter((listing) => listing.stage === 'callable' || listing.stage === 'certified').length);
+    elements.certifiedCount.textContent = String(state.listings.filter((listing) => listing.stage === 'certified').length);
     render();
   } catch {
     elements.catalogStatus.textContent = '目录暂不可用';
@@ -243,7 +276,7 @@ elements.searchInput.addEventListener('input', (event) => {
   render();
 });
 elements.distribution.addEventListener('change', (event) => {
-  state.distribution = event.target.value;
+  state.stage = event.target.value;
   render();
 });
 elements.sort.addEventListener('change', (event) => {

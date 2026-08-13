@@ -3,12 +3,12 @@
 <head>
   <meta charset="utf-8">
   <meta name="viewport" content="width=device-width, initial-scale=1">
-  <meta name="description" content="造物云技能市场：按任务发现经过来源、安全、评估与终审的企业级 AI 技能。">
+  <meta name="description" content="造物云技能市场：按任务发现、快速调用并逐步认证企业 AI 技能。">
   <meta name="theme-color" content="#F4F5F8">
   <title>造物云技能市场｜发现可信的 AI 技能</title>
   <link rel="icon" href="/assets/zaowuyun-mark-color.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css">
-  <script type="module" src="/app.js"></script>
+  <link rel="stylesheet" href="/styles.css?v=3">
+  <script type="module" src="/app.js?v=3"></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">跳到技能目录</a>
@@ -42,8 +42,8 @@
       <div class="hero-shell">
         <div class="hero-copy-block">
           <p class="eyebrow">企业 AI 能力市场</p>
-          <h1 id="hero-title">找到可信、可评估、可治理的 AI 技能</h1>
-          <p class="hero-copy">从业务任务出发，选择证据清楚、版本固定、可以持续运营的能力。</p>
+          <h1 id="hero-title">找到技能，马上开始调用</h1>
+          <p class="hero-copy">先按业务任务发现和调用，再根据许可、实证与终审状态决定能否安装和进入企业生产。</p>
           <form class="hero-search" id="hero-search" role="search">
             <label class="sr-only" for="hero-search-input">搜索技能名称、场景或能力</label>
             <input id="hero-search-input" name="keyword" type="search" autocomplete="off" placeholder="搜索技能名称、业务场景或关键词">
@@ -51,22 +51,22 @@
           </form>
         </div>
         <aside class="hero-aside" aria-label="市场可信状态">
-          <p class="aside-title">市场只发布通过门禁的版本</p>
+          <p class="aside-title">市场采用分层发布</p>
           <dl class="hero-metrics">
             <div>
               <dt id="release-count">0</dt>
-              <dd>正式发布</dd>
+              <dd>市场收录</dd>
             </div>
             <div>
-              <dt>6</dt>
-              <dd>道可信门禁</dd>
+              <dt id="callable-count">0</dt>
+              <dd>可快速调用</dd>
             </div>
             <div>
-              <dt>3</dt>
-              <dd>首批候选评估中</dd>
+              <dt id="certified-count">0</dt>
+              <dd>企业认证</dd>
             </div>
           </dl>
-          <p class="hero-policy">未经完整包、安全、SMS、Eval 与双人终审的技能，不会标记为可安装。</p>
+          <p class="hero-policy">可调用不等于可安装。完整包分发与企业生产仍需许可证、Eval 和双人终审。</p>
         </aside>
       </div>
     </section>
@@ -101,11 +101,12 @@
               </label>
               <div class="toolbar-group" aria-label="技能筛选">
                 <label>
-                  <span class="sr-only">分发状态</span>
+                  <span class="sr-only">市场阶段</span>
                   <select id="distribution-filter">
-                    <option value="all">全部状态</option>
-                    <option value="installable">可安装</option>
-                    <option value="source_only">仅来源</option>
+                    <option value="all">全部阶段</option>
+                    <option value="callable">可快速调用</option>
+                    <option value="certified">企业认证</option>
+                    <option value="indexed">已收录</option>
                   </select>
                 </label>
                 <label>
@@ -121,7 +122,7 @@
 
             <div class="result-summary" aria-live="polite">
               <strong id="catalog-status">正在验证目录</strong>
-              <span id="filter-summary">仅展示证据当前的公开 Release</span>
+              <span id="filter-summary">收录、调用与安装分层展示，状态不混淆</span>
             </div>
             <div id="catalog-content" class="catalog-grid" aria-live="polite" aria-busy="true">
               <div class="loading-state" role="status">
@@ -139,7 +140,7 @@
       <div class="section-shell trust-layout">
         <div class="trust-intro">
           <p class="eyebrow">可信准入</p>
-          <h2 id="trust-title">每一个“可安装”，都有完整证据链</h2>
+          <h2 id="trust-title">先可调用，再逐步走向企业认证</h2>
           <p>平台不把热度当质量，也不把单次审核当永久结论。内容、版本或证据发生变化时，发布状态会自动失效并重新评估。</p>
           <a class="text-link" href="https://skillops.tech/design-system/">查看 SkillOps 评估设计</a>
         </div>
@@ -159,14 +160,14 @@
         <div class="publish-copy">
           <p class="eyebrow">技能供给</p>
           <h2 id="publish-title">把技能提交到造物云</h2>
-          <p>当前采用审核制。平台先采集来源与完整技能包，再进入评估、终审和正式发布。</p>
+          <p>平台可先收录清晰、安全的技能说明；具备明确调用方式后进入可调用层；完整包通过许可、Eval 与终审后再开放安装。</p>
           <a class="button button-primary" href="mailto:contact@zaowuyun.com?subject=%E7%94%B3%E8%AF%B7%E5%8F%91%E5%B8%83%E9%80%A0%E7%89%A9%E4%BA%91%E6%8A%80%E8%83%BD">申请发布技能</a>
         </div>
         <div class="publish-flow" aria-label="技能发布流程">
           <article><strong>提交来源</strong><p>提供仓库、版本、许可与技能说明。</p></article>
           <article><strong>安全采集</strong><p>固定版本并校验完整包和每个文件。</p></article>
           <article><strong>评估终审</strong><p>完成 SMS、Eval 和双人独立终审。</p></article>
-          <article><strong>形成 Release</strong><p>通过后进入 Registry 并公开上架。</p></article>
+          <article><strong>分层发布</strong><p>先收录和调用，证据齐全后升级为可安装 Release。</p></article>
         </div>
       </div>
     </section>
