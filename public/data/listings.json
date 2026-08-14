@@ -1,6 +1,1570 @@
 {
   "schemaVersion": 1,
-  "generatedAt": null,
-  "listings": []
+  "generatedAt": "2026-08-14T17:36:01.651Z",
+  "listings": [
+    {
+      "skillId": "qiuyiwu1989-star/customer-brief",
+      "slug": "customer-brief",
+      "titleZh": "客户简报",
+      "originalName": "customer-brief",
+      "descriptionZh": "这是一个用于通用能力场景的外部技能。自动中文摘要尚待人工校对，请结合原始说明、来源与评估证据判断是否适用。",
+      "category": "沟通协作",
+      "tags": [
+        "客户洞察",
+        "商业简报"
+      ],
+      "version": "228626c8a9a5",
+      "stage": "indexed",
+      "distribution": "content",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "qiuyiwu1989-star",
+        "kind": "organization",
+        "verification": "来源已核验"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验与评估",
+        "acquisitionLabel": "获取企业授权后调用",
+        "note": "演示报价，不形成授权"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 86,
+        "smsTier": "S",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用客户简报，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断客户简报是否适合这个任务",
+          "请说明使用客户简报时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "228626c8a9a5"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "complete_package_missing"
+      }
+    },
+    {
+      "skillId": "qiuyiwu1989-star/release-checklist",
+      "slug": "release-checklist",
+      "titleZh": "发布检查清单",
+      "originalName": "release-checklist",
+      "descriptionZh": "这是一个用于通用能力场景的外部技能。自动中文摘要尚待人工校对，请结合原始说明、来源与评估证据判断是否适用。",
+      "category": "研发运维",
+      "tags": [
+        "发布管理",
+        "质量检查"
+      ],
+      "version": "228626c8a9a5",
+      "stage": "indexed",
+      "distribution": "content",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "qiuyiwu1989-star",
+        "kind": "organization",
+        "verification": "来源已核验"
+      },
+      "offer": {
+        "model": "one_time",
+        "priceLabel": "¥99 / 组织",
+        "rightsLabel": "企业内调用",
+        "acquisitionLabel": "提交企业采购",
+        "note": "演示报价，不形成授权"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 82,
+        "smsTier": "A",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用发布检查清单，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断发布检查清单是否适合这个任务",
+          "请说明使用发布检查清单时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "228626c8a9a5"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "complete_package_missing"
+      }
+    },
+    {
+      "skillId": "qiuyiwu1989-star/summarize-notes",
+      "slug": "summarize-notes",
+      "titleZh": "笔记总结",
+      "originalName": "summarize-notes",
+      "descriptionZh": "这是一个用于知识管理场景的外部技能。自动中文摘要尚待人工校对，请结合原始说明、来源与评估证据判断是否适用。",
+      "category": "数据与知识",
+      "tags": [
+        "会议纪要",
+        "知识整理"
+      ],
+      "version": "228626c8a9a5",
+      "stage": "indexed",
+      "distribution": "content",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "qiuyiwu1989-star",
+        "kind": "organization",
+        "verification": "来源已核验"
+      },
+      "offer": {
+        "model": "subscription",
+        "priceLabel": "¥29 / 月",
+        "rightsLabel": "企业内调用",
+        "acquisitionLabel": "选择组织订阅",
+        "note": "演示报价，不形成授权"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 78,
+        "smsTier": "A",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用笔记总结，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断笔记总结是否适合这个任务",
+          "请说明使用笔记总结时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "228626c8a9a5"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "complete_package_missing"
+      }
+    },
+    {
+      "skillId": "qiuyiwu1989-star/market-research",
+      "slug": "market-research",
+      "titleZh": "市场研究",
+      "originalName": "market-research",
+      "descriptionZh": "这是一个用于通用能力场景的外部技能。自动中文摘要尚待人工校对，请结合原始说明、来源与评估证据判断是否适用。",
+      "category": "研究洞察",
+      "tags": [
+        "市场研究",
+        "机会洞察"
+      ],
+      "version": "228626c8a9a5",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "qiuyiwu1989-star",
+        "kind": "organization",
+        "verification": "来源已核验"
+      },
+      "offer": {
+        "model": "contact",
+        "priceLabel": "联系授权",
+        "rightsLabel": "仅查看来源",
+        "acquisitionLabel": "联系创作者确认",
+        "note": "演示报价，不形成授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 74,
+        "smsTier": "B",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用市场研究，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断市场研究是否适合这个任务",
+          "请说明使用市场研究时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "228626c8a9a5"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "license_allows_source_link_only"
+      }
+    },
+    {
+      "skillId": "zaowuyun/skillops",
+      "slug": "skillops",
+      "titleZh": "SkillOps 技能人事部",
+      "originalName": "skillops",
+      "descriptionZh": "把企业技能当作数字员工管理，覆盖入库、盘点、SMS 评级、测试、版本、运营提升与退役治理。",
+      "category": "研发运维",
+      "tags": [
+        "技能管理",
+        "SMS 评级",
+        "企业治理"
+      ],
+      "version": "ad3f8024b897",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用SkillOps 技能人事部，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断SkillOps 技能人事部是否适合这个任务",
+          "请说明使用SkillOps 技能人事部时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "ad3f8024b897"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/ai-xiezuo-qiyue",
+      "slug": "ai-xiezuo-qiyue",
+      "titleZh": "AI 协作契约",
+      "originalName": "ai-xiezuo-qiyue",
+      "descriptionZh": "为人与 AI 的长期协作建立决策、授权、安全、发布和任务收尾协议，减少反复确认与越权操作。",
+      "category": "办公效率",
+      "tags": [
+        "AI 协作",
+        "授权边界",
+        "发布治理"
+      ],
+      "version": "aaf8dded0943",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pending",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用AI 协作契约，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断AI 协作契约是否适合这个任务",
+          "请说明使用AI 协作契约时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "aaf8dded0943"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/creator-education",
+      "slug": "creator-education",
+      "titleZh": "创造者教育",
+      "originalName": "creator-education",
+      "descriptionZh": "围绕作者身份、创造者成长与 AI 时代教育转型，提供可复用的理论解释、分析和对外表达框架。",
+      "category": "专业服务",
+      "tags": [
+        "教育创新",
+        "创造者",
+        "理论分析"
+      ],
+      "version": "a49b4f3e2c9b",
+      "stage": "callable",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用创造者教育，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断创造者教育是否适合这个任务",
+          "请说明使用创造者教育时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "a49b4f3e2c9b"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/panduanku-jiagou",
+      "slug": "panduanku-jiagou",
+      "titleZh": "判断库架构",
+      "originalName": "panduanku-jiagou",
+      "descriptionZh": "把存笔记的信息系统升级为存判断的系统，补齐主体、对象、陈述、时间和证据五位结构。",
+      "category": "数据与知识",
+      "tags": [
+        "知识库",
+        "第二大脑",
+        "决策支持"
+      ],
+      "version": "348ff1c",
+      "stage": "callable",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "owner_authorized_use",
+        "label": "允许平台调用，技能包分发授权待补齐"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 66,
+        "smsTier": "B",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用判断库架构，诊断下面这个知识或记忆系统，并给出迁移计划：",
+        "examples": [
+          "知识库能搜到原文但用不上",
+          "AI 总是记错是谁说的，怎么改架构"
+        ]
+      },
+      "source": {
+        "label": "造物云自有技能",
+        "revision": "348ff1c"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "redistribution_license_pending"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/shengchan-shigu-kuaizhen",
+      "slug": "shengchan-shigu-kuaizhen",
+      "titleZh": "生产事故快诊",
+      "originalName": "shengchan-shigu-kuaizhen",
+      "descriptionZh": "针对 502、打不开、响应变慢和服务器异常，从公网证据开始分层定位并形成可复用的防复发措施。",
+      "category": "研发运维",
+      "tags": [
+        "故障诊断",
+        "服务器",
+        "运维"
+      ],
+      "version": "348ff1c",
+      "stage": "callable",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "owner_authorized_use",
+        "label": "允许平台调用，技能包分发授权待补齐"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 56,
+        "smsTier": "C",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用生产事故快诊，按公网侧优先、证据优先的方式诊断下面的问题：",
+        "examples": [
+          "网站突然出现 502，帮我定位",
+          "服务器今天特别慢，应该先查什么"
+        ]
+      },
+      "source": {
+        "label": "造物云自有技能",
+        "revision": "348ff1c"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "redistribution_license_pending"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/xuqiu-jianbao",
+      "slug": "xuqiu-jianbao",
+      "titleZh": "需求简报器",
+      "originalName": "xuqiu-jianbao",
+      "descriptionZh": "把一句产品想法压缩成可执行的需求简报，明确意图、用户故事、验收标准、不做什么和授权范围。",
+      "category": "办公效率",
+      "tags": [
+        "产品需求",
+        "验收标准",
+        "项目协作"
+      ],
+      "version": "348ff1c",
+      "stage": "callable",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "owner_authorized_use",
+        "label": "允许平台调用，技能包分发授权待补齐"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 61,
+        "smsTier": "C",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用需求简报器，把下面的想法整理成一份可执行的需求简报：",
+        "examples": [
+          "帮我做一个新的企业技能市场",
+          "这个页面体验不好，先帮我整理需求"
+        ]
+      },
+      "source": {
+        "label": "造物云自有技能",
+        "revision": "348ff1c"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "redistribution_license_pending"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/zhongtai-selfhost-supabase",
+      "slug": "zhongtai-selfhost-supabase",
+      "titleZh": "自托管数据库接入",
+      "originalName": "zhongtai-selfhost-supabase",
+      "descriptionZh": "把应用迁入企业自有 Supabase 或 PostgreSQL 中台，覆盖数据、登录态、网络与国内服务器部署问题。",
+      "category": "产品与研发",
+      "tags": [
+        "Supabase",
+        "数据库迁移",
+        "私有化部署"
+      ],
+      "version": "d4546a9b7b4b",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pending",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用自托管数据库接入，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断自托管数据库接入是否适合这个任务",
+          "请说明使用自托管数据库接入时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "d4546a9b7b4b"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "skills-ecosystem/find-skills",
+      "slug": "find-skills",
+      "titleZh": "技能发现助手",
+      "originalName": "find-skills",
+      "descriptionZh": "根据用户想完成的任务查找可能存在的技能，并给出来源、用途和后续安装判断。",
+      "category": "办公效率",
+      "tags": [
+        "技能发现",
+        "能力检索",
+        "生态"
+      ],
+      "version": "1e85f6f9686e",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "开放技能生态",
+        "handle": "skills-ecosystem",
+        "kind": "source_owner",
+        "verification": "来源待进一步核验"
+      },
+      "offer": {
+        "model": "contact",
+        "priceLabel": "待创作者发布",
+        "rightsLabel": "仅查看来源",
+        "acquisitionLabel": "等待创作者认领",
+        "note": "尚未发布正式 Offer"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用技能发现助手，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断技能发现助手是否适合这个任务",
+          "请说明使用技能发现助手时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "开放技能生态",
+        "revision": "1e85f6f9686e"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/book-press-agent",
+      "slug": "book-press-agent",
+      "titleZh": "深度榨书智能体",
+      "originalName": "book-press-agent",
+      "descriptionZh": "把一本书压缩成可迁移的知识资产，提炼核心模型、洞察、内容选题和课程结构，并持续积累个人阅读体系。",
+      "category": "数据与知识",
+      "tags": [
+        "深度阅读",
+        "知识提炼",
+        "内容创作"
+      ],
+      "version": "e4d651ace732",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用深度榨书智能体，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断深度榨书智能体是否适合这个任务",
+          "请说明使用深度榨书智能体时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "e4d651ace732"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/design-taste-frontend",
+      "slug": "design-taste-frontend",
+      "titleZh": "前端设计品味",
+      "originalName": "design-taste-frontend",
+      "descriptionZh": "面向落地页、作品集和品牌重设计，先理解受众与审美方向，再生成更具辨识度、不过度模板化的前端界面。",
+      "category": "设计与媒体",
+      "tags": [
+        "前端设计",
+        "品牌体验",
+        "界面重构"
+      ],
+      "version": "aa194351b246",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用前端设计品味，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断前端设计品味是否适合这个任务",
+          "请说明使用前端设计品味时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "aa194351b246"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/hao-sheji-agent",
+      "slug": "hao-sheji-agent",
+      "titleZh": "好设计创新智能体",
+      "originalName": "hao-sheji-agent",
+      "descriptionZh": "用艺术、人本、科技、商业与文化五大构成理解和评价创新设计，支持案例学习、设计诊断与申报准备。",
+      "category": "专业服务",
+      "tags": [
+        "创新设计",
+        "五大构成",
+        "案例研究"
+      ],
+      "version": "92634f3a417a",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用好设计创新智能体，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断好设计创新智能体是否适合这个任务",
+          "请说明使用好设计创新智能体时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "92634f3a417a"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/innolab",
+      "slug": "innolab",
+      "titleZh": "创新实验室",
+      "originalName": "innolab",
+      "descriptionZh": "根据战略、产品与认知问题自动匹配方法论组合，形成从诊断、规划到落地的结构化创新分析。",
+      "category": "专业服务",
+      "tags": [
+        "战略分析",
+        "产品创新",
+        "方法论"
+      ],
+      "version": "d64bd557d4ec",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用创新实验室，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断创新实验室是否适合这个任务",
+          "请说明使用创新实验室时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "d64bd557d4ec"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/intelligence-density-assessor",
+      "slug": "intelligence-density-assessor",
+      "titleZh": "智能密度评估器",
+      "originalName": "intelligence-density-assessor",
+      "descriptionZh": "把企业 AI 场景拆成可评估的判断点，识别潜力、风险与优先级，帮助团队判断该不该做、先做哪一环。",
+      "category": "专业服务",
+      "tags": [
+        "AI 场景",
+        "潜力评估",
+        "优先级"
+      ],
+      "version": "8d57ac61b5f7",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用智能密度评估器，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断智能密度评估器是否适合这个任务",
+          "请说明使用智能密度评估器时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "8d57ac61b5f7"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/lengjing-insight",
+      "slug": "lengjing-insight",
+      "titleZh": "冷静 · 多维洞察",
+      "originalName": "lengjing-insight",
+      "descriptionZh": "面向会议、讲课、面试、谈判和访谈转写，自动匹配多种洞察方法，把非结构化对话转成可复用的事件级资产。",
+      "category": "数据与知识",
+      "tags": [
+        "会议洞察",
+        "访谈分析",
+        "知识资产"
+      ],
+      "version": "ab78b0bde71d",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用冷静 · 多维洞察，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断冷静 · 多维洞察是否适合这个任务",
+          "请说明使用冷静 · 多维洞察时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "ab78b0bde71d"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/vibecoding-pm",
+      "slug": "vibecoding-pm",
+      "titleZh": "督造 · Vibe Coding 项目经理",
+      "originalName": "vibecoding-pm",
+      "descriptionZh": "把 Vibe Coding 项目的意图、决定、进度、验收与交接外化为可跨平台接续的项目资产。",
+      "category": "办公效率",
+      "tags": [
+        "Vibe Coding",
+        "项目管理",
+        "上下文工程"
+      ],
+      "version": "51b28d7b2dc5",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用督造 · Vibe Coding 项目经理，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断督造 · Vibe Coding 项目经理是否适合这个任务",
+          "请说明使用督造 · Vibe Coding 项目经理时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "51b28d7b2dc5"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "qiuyiwu/youpu",
+      "slug": "youpu",
+      "titleZh": "有谱 · AI 项目记事系统",
+      "originalName": "youpu",
+      "descriptionZh": "为不会写代码的创造者持续记录项目目标、决定、进度与下一步，让不同 AI 和不同会话都能接着做。",
+      "category": "办公效率",
+      "tags": [
+        "项目记忆",
+        "AI 协作",
+        "无代码创作"
+      ],
+      "version": "e0e1da9c0f4d",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "造物云 SkillOps",
+        "handle": "zaowuyun",
+        "kind": "organization",
+        "verification": "本机技能卷已发现"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "免费体验",
+        "rightsLabel": "在线体验，企业授权待发布",
+        "acquisitionLabel": "进入工作台体验",
+        "note": "目录演示，不形成正式授权"
+      },
+      "license": {
+        "status": "unclear",
+        "label": "当前仅开放来源索引，正式授权待确认"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用有谱 · AI 项目记事系统，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断有谱 · AI 项目记事系统是否适合这个任务",
+          "请说明使用有谱 · AI 项目记事系统时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "造物云 SkillOps",
+        "revision": "e0e1da9c0f4d"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-core",
+      "slug": "gsap-core",
+      "titleZh": "GSAP 核心动画",
+      "originalName": "gsap-core",
+      "descriptionZh": "使用 GSAP 核心 API 构建补间、缓动、交错和响应式动画，适用于原生网页与多种前端框架。",
+      "category": "设计与媒体",
+      "tags": [
+        "GSAP",
+        "网页动画",
+        "前端"
+      ],
+      "version": "57f22eaa662c",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP 核心动画，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP 核心动画是否适合这个任务",
+          "请说明使用GSAP 核心动画时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "57f22eaa662c"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-frameworks",
+      "slug": "gsap-frameworks",
+      "titleZh": "GSAP 框架集成",
+      "originalName": "gsap-frameworks",
+      "descriptionZh": "在 Vue、Nuxt、Svelte 和 SvelteKit 中正确管理动画生命周期、作用域与组件卸载清理。",
+      "category": "产品与研发",
+      "tags": [
+        "GSAP",
+        "Vue",
+        "Svelte"
+      ],
+      "version": "842d9d3659ec",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP 框架集成，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP 框架集成是否适合这个任务",
+          "请说明使用GSAP 框架集成时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "842d9d3659ec"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-react",
+      "slug": "gsap-react",
+      "titleZh": "GSAP React 动画",
+      "originalName": "gsap-react",
+      "descriptionZh": "在 React 与 Next.js 中使用 useGSAP、引用和上下文安全创建动画，并正确处理清理与服务端渲染。",
+      "category": "产品与研发",
+      "tags": [
+        "GSAP",
+        "React",
+        "Next.js"
+      ],
+      "version": "e5ff0fcf502a",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP React 动画，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP React 动画是否适合这个任务",
+          "请说明使用GSAP React 动画时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "e5ff0fcf502a"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-scrolltrigger",
+      "slug": "gsap-scrolltrigger",
+      "titleZh": "GSAP 滚动动画",
+      "originalName": "gsap-scrolltrigger",
+      "descriptionZh": "使用 ScrollTrigger 构建滚动触发、固定区块、视差和进度联动动画。",
+      "category": "设计与媒体",
+      "tags": [
+        "GSAP",
+        "滚动动画",
+        "ScrollTrigger"
+      ],
+      "version": "5440bbf42b3a",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP 滚动动画，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP 滚动动画是否适合这个任务",
+          "请说明使用GSAP 滚动动画时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "5440bbf42b3a"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-timeline",
+      "slug": "gsap-timeline",
+      "titleZh": "GSAP 动画时间线",
+      "originalName": "gsap-timeline",
+      "descriptionZh": "用时间线、位置参数、嵌套和播放控制组织多步骤动画与复杂动效编排。",
+      "category": "设计与媒体",
+      "tags": [
+        "GSAP",
+        "时间线",
+        "动效编排"
+      ],
+      "version": "1a8b0f39cc4b",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP 动画时间线，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP 动画时间线是否适合这个任务",
+          "请说明使用GSAP 动画时间线时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "1a8b0f39cc4b"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-plugins",
+      "slug": "gsap-plugins",
+      "titleZh": "GSAP 插件工具箱",
+      "originalName": "gsap-plugins",
+      "descriptionZh": "覆盖 Flip、Draggable、Observer、SplitText、SVG、物理与缓动等 GSAP 插件的注册和使用方式。",
+      "category": "设计与媒体",
+      "tags": [
+        "GSAP",
+        "插件",
+        "SVG 动画"
+      ],
+      "version": "551d7d4944a1",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP 插件工具箱，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP 插件工具箱是否适合这个任务",
+          "请说明使用GSAP 插件工具箱时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "551d7d4944a1"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-performance",
+      "slug": "gsap-performance",
+      "titleZh": "GSAP 动画性能优化",
+      "originalName": "gsap-performance",
+      "descriptionZh": "通过 transform、批处理、will-change 和减少布局抖动，优化网页动画帧率与流畅度。",
+      "category": "产品与研发",
+      "tags": [
+        "GSAP",
+        "性能优化",
+        "60FPS"
+      ],
+      "version": "b8638f67bde4",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP 动画性能优化，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP 动画性能优化是否适合这个任务",
+          "请说明使用GSAP 动画性能优化时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "b8638f67bde4"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    },
+    {
+      "skillId": "greensock/gsap-utils",
+      "slug": "gsap-utils",
+      "titleZh": "GSAP 实用函数",
+      "originalName": "gsap-utils",
+      "descriptionZh": "使用 clamp、mapRange、interpolate、random、snap、toArray 和 wrap 等工具处理动画数据与集合。",
+      "category": "产品与研发",
+      "tags": [
+        "GSAP",
+        "工具函数",
+        "数据映射"
+      ],
+      "version": "1927bcc4ea95",
+      "stage": "indexed",
+      "distribution": "source_only",
+      "creator": {
+        "displayName": "GSAP",
+        "handle": "gsap",
+        "kind": "source_owner",
+        "verification": "来源声明为官方技能"
+      },
+      "offer": {
+        "model": "free",
+        "priceLabel": "开源免费",
+        "rightsLabel": "来源索引，遵循 MIT",
+        "acquisitionLabel": "在线体验后查看来源",
+        "note": "具体权利以上游许可为准"
+      },
+      "license": {
+        "status": "redistributable",
+        "label": "遵循已识别的开源许可，具体权利以上游为准"
+      },
+      "trust": {
+        "packageAudit": "pass",
+        "smsScore": 0,
+        "smsTier": "D",
+        "evalStatus": "pending",
+        "reviewStatus": "pending"
+      },
+      "invocation": {
+        "mode": "copy_text",
+        "text": "请使用GSAP 实用函数，帮助我完成下面的任务：",
+        "examples": [
+          "请先判断GSAP 实用函数是否适合这个任务",
+          "请说明使用GSAP 实用函数时需要补充哪些信息"
+        ]
+      },
+      "source": {
+        "label": "GSAP",
+        "revision": "1927bcc4ea95"
+      },
+      "install": {
+        "eligible": false,
+        "reason": "catalog_index_only"
+      }
+    }
+  ]
 }
-

@@ -6,6 +6,8 @@ import { fileURLToPath, pathToFileURL } from 'node:url';
 const ROOT = path.dirname(fileURLToPath(import.meta.url));
 const DEFAULT_PUBLIC_ROOT = path.resolve(ROOT, '../public');
 const MAX_CATALOG_BYTES = 2 * 1024 * 1024;
+const MAX_LISTINGS = 1000;
+const STAGES = new Set(['indexed', 'callable', 'certified']);
 
 const CONTENT_TYPES = new Map([
   ['.css', 'text/css; charset=utf-8'],
@@ -45,14 +47,73 @@ function sendJson(res, statusCode, value) {
   });
 }
 
+function exactKeys(value, keys, label) {
+  if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error(`${label} must be an object`);
+  const actual = Object.keys(value).sort();
+  const expected = [...keys].sort();
+  if (JSON.stringify(actual) !== JSON.stringify(expected)) throw new Error(`${label} keys are invalid`);
+}
+
+function boundedText(value, { max = 500, pattern } = {}) {
+  return typeof value === 'string' && value.length > 0 && value.length <= max && (!pattern || pattern.test(value));
+}
+
+function validateListing(value) {
+  exactKeys(value, ['category', 'creator', 'descriptionZh', 'distribution', 'install', 'invocation', 'license', 'offer', 'originalName', 'skillId', 'slug', 'source', 'stage', 'tags', 'titleZh', 'trust', 'version'], 'listing');
+  if (!boundedText(value.skillId, { max: 100, pattern: /^[a-z0-9-]+\/[a-z0-9-]+$/ })) throw new Error('skillId is invalid');
+  if (!boundedText(value.slug, { max: 64, pattern: /^[a-z0-9]+(?:-[a-z0-9]+)*$/ })) throw new Error('slug is invalid');
+  for (const field of ['titleZh', 'originalName', 'descriptionZh', 'category', 'version']) {
+    if (!boundedText(value[field], { max: field === 'descriptionZh' ? 500 : 100 })) throw new Error(`${field} is invalid`);
+  }
+  if (!STAGES.has(value.stage) || !['source_only', 'content'].includes(value.distribution)) throw new Error('listing stage is invalid');
+  if (!Array.isArray(value.tags) || value.tags.length > 12 || value.tags.some((tag) => !boundedText(tag, { max: 40 }))) throw new Error('tags are invalid');
+
+  exactKeys(value.creator, ['displayName', 'handle', 'kind', 'verification'], 'creator');
+  if (!boundedText(value.creator.displayName, { max: 80 }) || !boundedText(value.creator.handle, { max: 64, pattern: /^[a-z0-9-]+$/ }) || !['organization', 'source_owner'].includes(value.creator.kind) || !boundedText(value.creator.verification, { max: 100 })) throw new Error('creator is invalid');
+  exactKeys(value.offer, ['acquisitionLabel', 'model', 'note', 'priceLabel', 'rightsLabel'], 'offer');
+  if (!['free', 'one_time', 'subscription', 'contact'].includes(value.offer.model)) throw new Error('offer model is invalid');
+  for (const field of ['acquisitionLabel', 'note', 'priceLabel', 'rightsLabel']) {
+    if (!boundedText(value.offer[field], { max: 120 })) throw new Error(`offer ${field} is invalid`);
+  }
+
+  exactKeys(value.license, ['label', 'status'], 'license');
+  if (!['owner_authorized_use', 'redistributable', 'unclear'].includes(value.license.status) || !boundedText(value.license.label, { max: 120 })) throw new Error('license is invalid');
+  exactKeys(value.trust, ['evalStatus', 'packageAudit', 'reviewStatus', 'smsScore', 'smsTier'], 'trust');
+  if (!['pass', 'pending'].includes(value.trust.packageAudit) || !['pass', 'pending'].includes(value.trust.evalStatus) || !['certified', 'pending'].includes(value.trust.reviewStatus)) throw new Error('trust status is invalid');
+  if (!Number.isInteger(value.trust.smsScore) || value.trust.smsScore < 0 || value.trust.smsScore > 100 || !/^(?:S|[A-D])$/.test(value.trust.smsTier)) throw new Error('SMS is invalid');
+
+  exactKeys(value.invocation, ['examples', 'mode', 'text'], 'invocation');
+  if (value.invocation.mode !== 'copy_text' || !boundedText(value.invocation.text, { max: 500 })) throw new Error('invocation is invalid');
+  if (!Array.isArray(value.invocation.examples) || value.invocation.examples.length > 6 || value.invocation.examples.some((example) => !boundedText(example, { max: 160 }))) throw new Error('invocation examples are invalid');
+  exactKeys(value.source, ['label', 'revision'], 'source');
+  if (!boundedText(value.source.label, { max: 80 }) || !boundedText(value.source.revision, { max: 64, pattern: /^[0-9a-f]{7,64}$/ })) throw new Error('source is invalid');
+  exactKeys(value.install, ['eligible', 'reason'], 'install');
+  if (typeof value.install.eligible !== 'boolean' || !boundedText(value.install.reason, { max: 100, pattern: /^[a-z_]+$/ })) throw new Error('install is invalid');
+  if (value.stage === 'callable' && value.trust.packageAudit !== 'pass') throw new Error('callable listing must pass package audit');
+  if (value.stage === 'certified') {
+    const eligible = value.distribution === 'content'
+      && value.license.status === 'redistributable'
+      && value.trust.packageAudit === 'pass'
+      && value.trust.evalStatus === 'pass'
+      && value.trust.reviewStatus === 'certified';
+    if (!eligible) throw new Error('certified listing evidence is incomplete');
+  }
+  if (value.stage !== 'certified' && value.install.eligible) throw new Error('uncertified listing cannot be installable');
+  return value;
+}
+
 function validateCatalog(value) {
   if (!value || typeof value !== 'object' || Array.isArray(value)) throw new Error('catalog must be an object');
   const keys = Object.keys(value).sort();
   if (JSON.stringify(keys) !== JSON.stringify(['generatedAt', 'listings', 'schemaVersion'])) throw new Error('catalog keys are invalid');
-  if (value.schemaVersion !== 1 || !Array.isArray(value.listings)) throw new Error('catalog schema is invalid');
+  if (value.schemaVersion !== 1 || !Array.isArray(value.listings) || value.listings.length > MAX_LISTINGS) throw new Error('catalog schema is invalid');
   if (value.generatedAt !== null && (typeof value.generatedAt !== 'string' || !Number.isFinite(Date.parse(value.generatedAt)))) {
     throw new Error('catalog generatedAt is invalid');
   }
+  value.listings.forEach(validateListing);
+  const slugs = value.listings.map((listing) => listing.slug);
+  const ids = value.listings.map((listing) => listing.skillId);
+  if (new Set(slugs).size !== slugs.length || new Set(ids).size !== ids.length) throw new Error('catalog identities are duplicated');
   return value;
 }
 
@@ -73,6 +134,7 @@ function resolvePublicPath(publicRoot, pathname) {
     return null;
   }
   if (decoded.includes('\0') || decoded.includes('\\')) return null;
+  if (/^\/skills\/[a-z0-9]+(?:-[a-z0-9]+)*\/?$/.test(decoded)) return path.resolve(publicRoot, 'skill.html');
   const relative = decoded === '/' ? 'index.html' : decoded.replace(/^\/+/, '');
   const candidate = path.resolve(publicRoot, relative);
   const prefix = `${publicRoot}${path.sep}`;
