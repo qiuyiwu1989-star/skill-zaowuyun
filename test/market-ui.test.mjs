@@ -31,8 +31,15 @@ test('market page follows Zaowuyun design tokens and Chinese enterprise IA', asy
   assert.match(html, /可调用不等于可安装/);
   assert.match(html, /可快速调用/);
   assert.match(app, /复制调用词/);
+  assert.match(app, /到工作台体验/);
+  assert.match(app, /creatorName/);
+  assert.match(app, /offerLabel/);
+  assert.match(css, /grid-template-columns: repeat\(2/);
   assert.match(detailHtml, /快速调用/);
   assert.match(detailJs, /调用授权与技能包分发不是一回事/);
+  assert.match(detailJs, /listing\.creator\.displayName/);
+  assert.match(detailJs, /listing\.offer\.priceLabel/);
+  assert.match(detailJs, /到工作台体验/);
   assert.match(detailCss, /evidence-grid/);
 });
 
@@ -44,16 +51,18 @@ test('public UI contains no forbidden dash typography or candidate identifiers',
   assert.doesNotMatch(publicSource, /storageRef|reviewerPrincipal|prompt|output|token/iu);
 });
 
-test('first catalog batch is callable, evidence-backed and not installable', async () => {
+test('public catalog exposes a mature 20-skill market without overstating installation', async () => {
   const catalog = JSON.parse(await readFile(path.join(root, 'public/data/listings.json'), 'utf8'));
-  assert.equal(catalog.listings.length, 3);
-  assert.deepEqual(catalog.listings.map((listing) => listing.titleZh).sort(), ['判断库架构', '生产事故快诊', '需求简报器']);
+  assert.equal(catalog.listings.length, 20);
+  assert.ok(catalog.listings.some((listing) => listing.titleZh === 'SkillOps 技能人事部'));
+  assert.ok(catalog.listings.some((listing) => listing.titleZh === 'GSAP React 动画'));
+  assert.equal(catalog.listings.filter((listing) => listing.stage === 'callable').length, 4);
+  assert.equal(catalog.listings.find((listing) => listing.slug === 'customer-brief').trust.smsTier, 'S');
   for (const listing of catalog.listings) {
-    assert.equal(listing.stage, 'callable');
-    assert.equal(listing.distribution, 'source_only');
     assert.equal(listing.install.eligible, false);
-    assert.equal(listing.trust.packageAudit, 'pass');
     assert.equal(listing.trust.evalStatus, 'pending');
+    assert.ok(listing.creator.displayName);
+    assert.ok(listing.offer.priceLabel);
     assert.match(listing.invocation.text, /^请使用/);
     assert.doesNotMatch(JSON.stringify(listing), /cand_[0-9a-f]+|storageRef|principal/iu);
   }

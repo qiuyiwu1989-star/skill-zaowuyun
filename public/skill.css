@@ -11,11 +11,18 @@
 .detail-snapshot { padding: 24px; border: 1px solid var(--border); border-radius: var(--radius-xl); background: var(--card); box-shadow: var(--shadow-1); }
 .detail-snapshot p { margin: 10px 0 18px; color: var(--fg2); font-size: .88rem; }
 .snapshot-revision { color: var(--fg3); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; }
+.detail-market { display: grid; grid-template-columns: repeat(3, 1fr); gap: 12px; padding: 22px 0; border-bottom: 1px solid var(--border); }
+.market-fact { min-width: 0; padding: 18px 20px; border: 1px solid var(--border); border-radius: var(--radius-lg); background: var(--card); }
+.market-fact span { color: var(--fg3); font-size: .72rem; }
+.market-fact strong { display: block; margin-top: 6px; font-size: 1rem; }
+.market-fact p { margin: 7px 0 0; color: var(--fg2); font-size: .76rem; }
 .detail-section { padding: 58px 0; border-bottom: 1px solid var(--border); }
 .detail-section h2 { max-width: 760px; margin: 0; font-size: clamp(1.75rem, 3vw, 2.8rem); line-height: 1.18; letter-spacing: -.035em; }
 .invoke-panel { display: grid; grid-template-columns: 1fr auto; gap: 24px; align-items: end; }
 .invocation-text { grid-column: 1 / -1; display: block; padding: 22px; border: 1px solid var(--border-strong); border-radius: var(--radius-lg); background: var(--bg2); color: var(--fg); font-family: inherit; font-size: 1rem; white-space: normal; }
 .detail-invoke { min-width: 170px; }
+.detail-actions { display: flex; flex-wrap: wrap; justify-content: flex-end; gap: 8px; }
+.invoke-pending { grid-column: 1 / -1; max-width: 720px; margin: 0; color: var(--fg2); }
 .invoke-examples { grid-column: 1 / -1; }
 .invoke-examples strong { font-size: .82rem; }
 .invoke-examples ul { display: flex; flex-wrap: wrap; gap: 8px; margin: 12px 0 0; padding: 0; list-style: none; }
@@ -34,7 +41,9 @@
 @media (max-width: 860px) {
   .detail-shell, .detail-loading, .detail-error { width: min(calc(100% - 40px), 1120px); }
   .detail-hero, .invoke-panel { grid-template-columns: 1fr; }
+  .detail-market { grid-template-columns: 1fr; }
   .detail-snapshot { max-width: 560px; }
+  .detail-actions { justify-content: flex-start; }
   .detail-invoke { justify-self: start; }
   .evidence-grid { grid-template-columns: repeat(2, 1fr); }
 }

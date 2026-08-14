@@ -8,6 +8,7 @@
   },
   "scripts": {
     "start": "node src/server.mjs",
+    "catalog:sync": "node scripts/sync-skillops-catalog.mjs",
     "check": "node --check src/server.mjs && node --check public/app.js && node --check public/skill.js",
     "test": "node --test test/*.test.mjs"
   }

@@ -358,19 +358,29 @@ select { padding: 0 34px 0 12px; cursor: pointer; }
   font-size: .8rem;
 }
 .result-summary strong { color: var(--fg); font-size: .86rem; }
-.catalog-grid { display: grid; grid-template-columns: repeat(3, minmax(0, 1fr)); gap: 14px; }
+.catalog-grid { display: grid; grid-template-columns: repeat(2, minmax(0, 1fr)); gap: 18px; }
 .skill-card {
-  min-height: 346px;
+  position: relative;
+  min-height: 430px;
   display: flex;
   flex-direction: column;
-  padding: 22px;
+  padding: 28px;
   border: 1px solid var(--border);
-  border-radius: var(--radius-lg);
+  border-radius: 26px;
   background: var(--card);
   box-shadow: var(--shadow-1);
   transition: transform 180ms var(--ease), border-color 180ms ease;
 }
-.skill-card:hover { transform: translateY(-2px); border-color: var(--border-strong); }
+.skill-card::before {
+  content: "";
+  position: absolute;
+  inset: 0 24px auto;
+  height: 3px;
+  border-radius: 0 0 999px 999px;
+  background: linear-gradient(90deg, var(--accent), #65a6ff);
+  opacity: .82;
+}
+.skill-card:hover { transform: translateY(-3px); border-color: rgb(90 79 230 / 28%); box-shadow: var(--shadow-2); }
 .card-topline, .card-evidence, .card-footer { display: flex; align-items: center; justify-content: space-between; gap: 12px; }
 .skill-category, .trust-badge, .distribution-badge {
   display: inline-flex;
@@ -384,11 +394,11 @@ select { padding: 0 34px 0 12px; cursor: pointer; }
 .skill-category { background: var(--accent-bg); color: var(--accent); }
 .trust-badge { background: var(--ok-bg); color: var(--ok); }
 .distribution-badge { background: var(--info-bg); color: var(--info); }
-.skill-card h3 { margin: 22px 0 4px; font-size: 1.32rem; letter-spacing: -.025em; }
+.skill-card h3 { margin: 24px 0 4px; font-size: 1.58rem; letter-spacing: -.035em; }
 .skill-original { min-height: 22px; margin: 0; color: var(--fg3); font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .72rem; }
 .skill-description {
   display: -webkit-box;
-  min-height: 75px;
+  min-height: 70px;
   margin: 15px 0 20px;
   overflow: hidden;
   color: var(--fg2);
@@ -396,6 +406,20 @@ select { padding: 0 34px 0 12px; cursor: pointer; }
   -webkit-line-clamp: 3;
   -webkit-box-orient: vertical;
 }
+.card-commerce {
+  display: grid;
+  grid-template-columns: 1fr auto;
+  gap: 16px;
+  margin-bottom: 18px;
+  padding: 13px 14px;
+  border: 1px solid var(--border);
+  border-radius: var(--radius-md);
+  background: var(--accent-bg);
+}
+.card-commerce span { display: block; color: var(--fg3); font-size: .66rem; }
+.card-commerce strong { display: block; margin-top: 2px; font-size: .78rem; }
+.price-summary { text-align: right; }
+.price-summary strong { color: var(--accent); }
 .card-evidence { margin-top: auto; padding: 14px 0; border-top: 1px solid var(--border); border-bottom: 1px solid var(--border); }
 .evidence-item span { display: block; color: var(--fg3); font-size: .66rem; }
 .evidence-item strong { display: block; margin-top: 2px; font-family: ui-monospace, SFMono-Regular, Menlo, monospace; font-size: .8rem; }
@@ -403,7 +427,20 @@ select { padding: 0 34px 0 12px; cursor: pointer; }
 .card-footer .button { min-height: 38px; padding: .45rem .85rem; font-size: .76rem; }
 .card-invoke { flex: 1; }
 .card-invoke[data-copied="true"] { background: var(--ok); border-color: var(--ok); }
+.card-invoke[aria-disabled="true"] { opacity: .48; cursor: not-allowed; pointer-events: none; }
 .card-detail { flex: 0 0 auto; }
+.card-copy-link {
+  align-self: flex-start;
+  margin-top: 12px;
+  padding: 0;
+  border: 0;
+  background: transparent;
+  color: var(--accent);
+  cursor: pointer;
+  font-size: .76rem;
+  font-weight: 650;
+}
+.card-copy-link:disabled { color: var(--fg3); cursor: not-allowed; }
 .clipboard-fallback { position: fixed; inset: -1000px auto auto -1000px; }
 .card-version { color: var(--fg3); font-size: .7rem; }
 .card-link { color: var(--accent); font-size: .78rem; font-weight: 650; text-decoration: none; }
@@ -511,10 +548,6 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); }
   .category-note { display: none; }
 }
 
-@media (max-width: 1160px) and (min-width: 681px) {
-  .catalog-grid { grid-template-columns: repeat(2, minmax(0, 1fr)); }
-}
-
 @media (max-width: 680px) {
   .brand-product, .brand-divider, .nav-cta { display: none; }
   .hero { padding: 64px 0 52px; }
@@ -530,6 +563,7 @@ footer { border-top: 1px solid var(--border); background: var(--bg2); }
   select { width: 100%; }
   .result-summary { align-items: flex-start; flex-direction: column; gap: 2px; margin-bottom: 12px; }
   .catalog-grid, .publish-flow { grid-template-columns: 1fr; }
+  .skill-card { min-height: 0; padding: 23px; }
   .empty-state { grid-template-columns: 1fr; padding: 28px; }
   .pipeline-summary { max-width: 260px; }
   .empty-actions { align-items: stretch; flex-direction: column; }

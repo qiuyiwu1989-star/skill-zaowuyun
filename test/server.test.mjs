@@ -53,6 +53,8 @@ test('tiered catalog accepts safe callable entries and rejects misleading instal
     skillId: 'qiuyiwu/example-skill', slug: 'example-skill', titleZh: '示例技能', originalName: 'example-skill',
     descriptionZh: '用于验证公开目录契约。', category: '产品与研发', tags: ['需求分析'], version: 'abcdef0',
     stage: 'callable', distribution: 'source_only',
+    creator: { displayName: '造物云', handle: 'zaowuyun', kind: 'organization', verification: '来源已核验' },
+    offer: { model: 'free', priceLabel: '免费体验', rightsLabel: '在线体验', acquisitionLabel: '进入工作台体验', note: '正式授权待发布' },
     license: { status: 'owner_authorized_use', label: '允许平台调用，分发授权待补齐' },
     trust: { packageAudit: 'pass', smsScore: 60, smsTier: 'C', evalStatus: 'pending', reviewStatus: 'pending' },
     invocation: { mode: 'copy_text', text: '请使用示例技能处理下面的任务：', examples: ['整理这个需求'] },

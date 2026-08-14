@@ -61,20 +61,42 @@ function render(listing) {
   snapshot.append(snapshotTitle, snapshotText, element('span', 'snapshot-revision', `固定版本 ${listing.source.revision}`));
   hero.append(copy, snapshot);
 
+  const market = element('section', 'detail-market');
+  const creator = element('div', 'market-fact');
+  creator.append(element('span', '', '创作者'), element('strong', '', listing.creator.displayName), element('p', '', listing.creator.verification));
+  const price = element('div', 'market-fact');
+  price.append(element('span', '', '获取方式'), element('strong', '', listing.offer.priceLabel), element('p', '', listing.offer.rightsLabel));
+  const terms = element('div', 'market-fact');
+  terms.append(element('span', '', '授权说明'), element('strong', '', listing.offer.acquisitionLabel), element('p', '', listing.offer.note));
+  market.append(creator, price, terms);
+
   const invoke = element('section', 'detail-section invoke-panel');
   invoke.id = 'invoke';
   const invokeCopy = element('div');
-  invokeCopy.append(element('p', 'eyebrow', '快速调用'), element('h2', '', '复制这句话，直接交给你的 AI 助手'));
-  const invocation = element('code', 'invocation-text', listing.invocation.text);
-  const button = element('button', 'button button-primary detail-invoke', '复制调用词');
-  button.type = 'button';
-  button.addEventListener('click', () => copyText(button, listing.invocation.text));
+  const callable = listing.stage === 'callable' || listing.stage === 'certified';
+  invokeCopy.append(
+    element('p', 'eyebrow', callable ? '在线体验' : '调用准备中'),
+    element('h2', '', callable ? '进入工作台，让技能开始处理任务' : '这个技能已收录，正在完成调用验证')
+  );
   const examples = element('div', 'invoke-examples');
-  examples.append(element('strong', '', '可以这样继续描述任务'));
-  const list = element('ul');
-  for (const example of listing.invocation.examples) list.append(element('li', '', example));
-  examples.append(list);
-  invoke.append(invokeCopy, invocation, button, examples);
+  if (callable) {
+    const invocation = element('code', 'invocation-text', listing.invocation.text);
+    const actions = element('div', 'detail-actions');
+    const workbench = element('a', 'button button-primary detail-invoke', '到工作台体验');
+    workbench.href = `https://code.zaowuyun.com/?skill=${encodeURIComponent(listing.slug)}`;
+    const button = element('button', 'button detail-invoke', '复制调用词');
+    button.type = 'button';
+    button.addEventListener('click', () => copyText(button, listing.invocation.text));
+    actions.append(workbench, button);
+    examples.append(element('strong', '', '可以这样继续描述任务'));
+    const list = element('ul');
+    for (const example of listing.invocation.examples) list.append(element('li', '', example));
+    examples.append(list);
+    invoke.append(invokeCopy, actions, invocation, examples);
+  } else {
+    const note = element('p', 'invoke-pending', '当前可以查看来源、创作者与可信状态。完成调用模板和安全验证后，将开放工作台体验。');
+    invoke.append(invokeCopy, note);
+  }
 
   const evidence = element('section', 'detail-section');
   evidence.id = 'evidence';
@@ -103,7 +125,7 @@ function render(listing) {
   boundaryGrid.append(allowed, restricted);
   boundary.append(boundaryGrid);
 
-  shell.append(hero, invoke, evidence, boundary);
+  shell.append(hero, market, invoke, evidence, boundary);
   main.replaceChildren(shell);
   main.setAttribute('aria-busy', 'false');
 }

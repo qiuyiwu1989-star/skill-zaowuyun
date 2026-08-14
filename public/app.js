@@ -54,6 +54,8 @@ function normalizeListing(listing) {
   const trust = listing?.trust && typeof listing.trust === 'object' ? listing.trust : {};
   const invocation = listing?.invocation && typeof listing.invocation === 'object' ? listing.invocation : {};
   const license = listing?.license && typeof listing.license === 'object' ? listing.license : {};
+  const creator = listing?.creator && typeof listing.creator === 'object' ? listing.creator : {};
+  const offer = listing?.offer && typeof listing.offer === 'object' ? listing.offer : {};
   const source = listing?.source && typeof listing.source === 'object' ? listing.source : {};
   const title = safeText(listing?.titleZh) || safeText(metadata.titleZh) || safeText(listing?.name) || '未命名技能';
   const originalName = safeText(listing?.originalName) || safeText(listing?.name) || safeText(metadata.originalName);
@@ -65,6 +67,8 @@ function normalizeListing(listing) {
   const stage = ['indexed', 'callable', 'certified'].includes(listing?.stage) ? listing.stage : (installable ? 'certified' : 'indexed');
   return {
     category,
+    creatorName: safeText(creator.displayName) || '开放技能生态',
+    creatorVerification: safeText(creator.verification),
     description,
     detailUrl: slug ? `/skills/${slug}/` : safeUrl(listing?.canonicalUrl) || safeUrl(listing?.detailUrl),
     evalRate: number(evaluation.successRate),
@@ -73,6 +77,8 @@ function normalizeListing(listing) {
     invocationText: safeText(invocation.text),
     licenseLabel: safeText(license.label),
     originalName,
+    offerLabel: safeText(offer.priceLabel) || '联系授权',
+    offerNote: safeText(offer.note),
     publishedAt: safeText(catalog.publishedAt) || safeText(listing?.publishedAt),
     reviewStatus: safeText(trust.reviewStatus) || 'pending',
     smsScore: number(trust.smsScore ?? sms.total ?? sms.score),
@@ -174,6 +180,13 @@ function createSkillCard(listing) {
   const original = createElement('p', 'skill-original', listing.originalName && listing.originalName !== listing.title ? listing.originalName : '造物云自有技能');
   const description = createElement('p', 'skill-description', listing.description);
 
+  const commerce = createElement('div', 'card-commerce');
+  const creator = createElement('div', 'creator-summary');
+  creator.append(createElement('span', '', '创作者'), createElement('strong', '', listing.creatorName));
+  const pricing = createElement('div', 'price-summary');
+  pricing.append(createElement('span', '', '获取方式'), createElement('strong', '', listing.offerLabel));
+  commerce.append(creator, pricing);
+
   const evidence = createElement('div', 'card-evidence');
   const sms = createElement('div', 'evidence-item');
   sms.append(createElement('span', '', 'SMS 静态潜力'), createElement('strong', '', listing.smsScore ? `${listing.smsScore} 分 · ${listing.smsTier || '待评级'}` : '待评估'));
@@ -184,14 +197,21 @@ function createSkillCard(listing) {
   evidence.append(sms, evaluation, review);
 
   const footer = createElement('div', 'card-footer');
-  const invoke = createElement('button', 'button button-primary card-invoke', '复制调用词');
-  invoke.type = 'button';
-  invoke.disabled = !listing.invocationText;
-  invoke.addEventListener('click', () => copyInvocation(invoke, listing.invocationText));
+  const invoke = createElement('a', 'button button-primary card-invoke', listing.stage === 'indexed' ? '调用验证中' : '到工作台体验');
+  if (listing.stage === 'indexed') {
+    invoke.removeAttribute('href');
+    invoke.setAttribute('aria-disabled', 'true');
+  } else {
+    invoke.href = `https://code.zaowuyun.com/?skill=${encodeURIComponent(listing.detailUrl.split('/').filter(Boolean).at(-1) || '')}`;
+  }
   const link = createElement('a', 'button card-detail', '查看详情');
   link.href = listing.detailUrl || '#trust';
   footer.append(invoke, link);
-  article.append(topline, title, original, description, evidence, footer);
+  const copy = createElement('button', 'card-copy-link', '复制调用词');
+  copy.type = 'button';
+  copy.disabled = listing.stage === 'indexed' || !listing.invocationText;
+  copy.addEventListener('click', () => copyInvocation(copy, listing.invocationText));
+  article.append(topline, title, original, description, commerce, evidence, footer, copy);
   return article;
 }
 
