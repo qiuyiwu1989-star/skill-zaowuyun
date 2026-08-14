@@ -11,6 +11,7 @@ const elements = {
   certifiedCount: document.querySelector('#certified-count'),
   releaseCount: document.querySelector('#release-count'),
   searchInput: document.querySelector('#catalog-search-input'),
+  shelfList: document.querySelector('#shelf-list'),
   sort: document.querySelector('#sort-select'),
   themeToggle: document.querySelector('#theme-toggle')
 };
@@ -197,10 +198,9 @@ function createSkillCard(listing) {
   evidence.append(sms, evaluation, review);
 
   const footer = createElement('div', 'card-footer');
-  const invoke = createElement('a', 'button button-primary card-invoke', listing.stage === 'indexed' ? '调用验证中' : '到工作台体验');
+  const invoke = createElement('a', 'button button-primary card-invoke', listing.stage === 'indexed' ? '问技能管家' : '到工作台体验');
   if (listing.stage === 'indexed') {
-    invoke.removeAttribute('href');
-    invoke.setAttribute('aria-disabled', 'true');
+    invoke.href = `https://code.zaowuyun.com/?agent=skill-steward&skill=${encodeURIComponent(listing.detailUrl.split('/').filter(Boolean).at(-1) || '')}`;
   } else {
     invoke.href = `https://code.zaowuyun.com/?skill=${encodeURIComponent(listing.detailUrl.split('/').filter(Boolean).at(-1) || '')}`;
   }
@@ -213,6 +213,32 @@ function createSkillCard(listing) {
   copy.addEventListener('click', () => copyInvocation(copy, listing.invocationText));
   article.append(topline, title, original, description, commerce, evidence, footer, copy);
   return article;
+}
+
+function shelfSection(title, note, listings) {
+  const section = createElement('section', 'market-shelf');
+  const heading = createElement('div', 'shelf-heading');
+  const copy = createElement('div');
+  copy.append(createElement('h3', '', title), createElement('p', '', note));
+  heading.append(copy, createElement('span', 'shelf-count', `${listings.length} 项`));
+  const track = createElement('div', 'shelf-track');
+  track.append(...listings.slice(0, 3).map((listing) => createSkillCard(listing)));
+  section.append(heading, track);
+  return section;
+}
+
+function renderShelves() {
+  if (!elements.shelfList) return;
+  const callable = state.listings.filter((listing) => listing.stage === 'callable' || listing.stage === 'certified');
+  const presetNames = new Set(['深度榨书智能体', '好设计创新智能体', '创新实验室', '智能密度评估器', '冷静·多维洞察', '督造', '有谱']);
+  const presets = state.listings.filter((listing) => presetNames.has(listing.title));
+  const creator = state.listings.filter((listing) => listing.creatorName === '造物云 SkillOps');
+  const shelves = [
+    shelfSection('现在就能进入工作台', '调用方式清晰，适合先从具体任务开始体验。', callable),
+    shelfSection('造物云预设技能', '来自已授权预设技能卷，已完成安全归档读取并进入目录。', presets),
+    shelfSection('创作者精选', '查看创作者、报价和适用边界，再决定是否纳入企业能力库。', creator)
+  ].filter((section) => section.querySelectorAll('.skill-card').length > 0);
+  elements.shelfList.replaceChildren(...shelves);
 }
 
 function renderCategories() {
@@ -237,6 +263,7 @@ function renderCategories() {
 
 function render() {
   renderCategories();
+  renderShelves();
   const filtered = sortListings(state.listings.filter(matches));
   elements.catalogStatus.textContent = `${filtered.length} 项可用能力`;
   const filters = [];
@@ -289,6 +316,15 @@ elements.heroForm.addEventListener('submit', (event) => {
   elements.searchInput.value = state.keyword;
   render();
   document.querySelector('#catalog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+});
+document.querySelectorAll('[data-suggestion]').forEach((button) => {
+  button.addEventListener('click', () => {
+    elements.heroInput.value = button.dataset.suggestion || '';
+    state.keyword = elements.heroInput.value;
+    elements.searchInput.value = state.keyword;
+    render();
+    document.querySelector('#catalog')?.scrollIntoView({ behavior: 'smooth', block: 'start' });
+  });
 });
 elements.searchInput.addEventListener('input', (event) => {
   state.keyword = event.target.value.trim();

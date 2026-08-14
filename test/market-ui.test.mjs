@@ -17,10 +17,13 @@ test('market page follows Zaowuyun design tokens and Chinese enterprise IA', asy
   ]);
 
   assert.match(html, /造物云技能市场/);
-  assert.match(html, /按任务选择技能/);
+  assert.match(html, /浏览全部技能/);
   assert.match(html, /场景分类/);
   assert.match(html, /可信准入/);
   assert.match(html, /发布技能/);
+  assert.match(html, /技能管家 Agent/);
+  assert.match(html, /值得先试的技能/);
+  assert.match(html, /创作者和企业都能建设技能/);
   assert.match(html, /id="catalog-search-input"/);
   assert.match(html, /id="distribution-filter"/);
   assert.match(html, /zaowuyun-mark-color\.svg/);
@@ -32,6 +35,8 @@ test('market page follows Zaowuyun design tokens and Chinese enterprise IA', asy
   assert.match(html, /可快速调用/);
   assert.match(app, /复制调用词/);
   assert.match(app, /到工作台体验/);
+  assert.match(app, /问技能管家/);
+  assert.match(app, /造物云预设技能/);
   assert.match(app, /creatorName/);
   assert.match(app, /offerLabel/);
   assert.match(css, /grid-template-columns: repeat\(2/);
@@ -51,10 +56,13 @@ test('public UI contains no forbidden dash typography or candidate identifiers',
   assert.doesNotMatch(publicSource, /storageRef|reviewerPrincipal|prompt|output|token/iu);
 });
 
-test('public catalog exposes a mature 20-skill market without overstating installation', async () => {
+test('public catalog exposes a mature 28-skill market without overstating installation', async () => {
   const catalog = JSON.parse(await readFile(path.join(root, 'public/data/listings.json'), 'utf8'));
-  assert.equal(catalog.listings.length, 20);
+  assert.equal(catalog.listings.length, 28);
   assert.ok(catalog.listings.some((listing) => listing.titleZh === 'SkillOps 技能人事部'));
+  assert.ok(catalog.listings.some((listing) => listing.titleZh === '深度榨书智能体'));
+  assert.ok(catalog.listings.some((listing) => listing.titleZh === '创新实验室'));
+  assert.ok(catalog.listings.some((listing) => listing.titleZh === '有谱 · AI 项目记事系统'));
   assert.ok(catalog.listings.some((listing) => listing.titleZh === 'GSAP React 动画'));
   assert.equal(catalog.listings.filter((listing) => listing.stage === 'callable').length, 4);
   assert.equal(catalog.listings.find((listing) => listing.slug === 'customer-brief').trust.smsTier, 'S');

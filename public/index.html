@@ -7,8 +7,8 @@
   <meta name="theme-color" content="#F4F5F8">
   <title>造物云技能市场｜发现可信的 AI 技能</title>
   <link rel="icon" href="/assets/zaowuyun-mark-color.svg" type="image/svg+xml">
-  <link rel="stylesheet" href="/styles.css?v=4">
-  <script type="module" src="/app.js?v=4"></script>
+  <link rel="stylesheet" href="/styles.css?v=5">
+  <script type="module" src="/app.js?v=5"></script>
 </head>
 <body>
   <a class="skip-link" href="#catalog">跳到技能目录</a>
@@ -23,15 +23,15 @@
       </a>
       <nav aria-label="主导航">
         <a href="#catalog">能力市场</a>
-        <a href="#categories">场景分类</a>
-        <a href="#trust">可信准入</a>
-        <a href="#publish">发布技能</a>
+        <a href="#steward">技能管家</a>
+        <a href="#shelves">可信推荐</a>
+        <a href="#publish">创作者中心</a>
       </nav>
       <div class="nav-actions">
         <button class="theme-toggle" id="theme-toggle" type="button" aria-label="切换深浅主题" aria-pressed="false">
           <span class="theme-toggle-label">深色</span>
         </button>
-        <a class="button button-primary nav-cta" href="https://www.zaowuyun.com/">进入造物云</a>
+        <a class="button button-primary nav-cta" href="https://code.zaowuyun.com/">进入工作台</a>
       </div>
     </div>
   </header>
@@ -43,15 +43,20 @@
         <div class="hero-copy-block">
           <p class="eyebrow">企业 AI 能力市场</p>
           <h1 id="hero-title">找到技能，马上开始调用</h1>
-          <p class="hero-copy">理解业务任务，发现合适技能，查看创作者与授权方式，然后直接进入造物云工作台体验。</p>
+          <p class="hero-copy">描述你的业务任务。技能管家会理解需求、检索可信目录、解释推荐依据，并把合适的技能带入造物云工作台。</p>
           <form class="hero-search" id="hero-search" role="search">
             <label class="sr-only" for="hero-search-input">搜索技能名称、场景或能力</label>
-            <input id="hero-search-input" name="keyword" type="search" autocomplete="off" placeholder="搜索技能名称、业务场景或关键词">
-            <button class="button button-primary" type="submit">搜索技能</button>
+            <input id="hero-search-input" name="keyword" type="search" autocomplete="off" placeholder="例如：分析市场机会、整理会议决策、诊断线上故障">
+            <button class="button button-primary" type="submit">让技能管家查找</button>
           </form>
+          <div class="hero-suggestions" aria-label="常用任务示例">
+            <button type="button" data-suggestion="分析市场机会">分析市场机会</button>
+            <button type="button" data-suggestion="整理会议决策">整理会议决策</button>
+            <button type="button" data-suggestion="诊断线上故障">诊断线上故障</button>
+          </div>
         </div>
         <aside class="hero-aside" aria-label="市场可信状态">
-          <p class="aside-title">市场采用分层发布</p>
+          <p class="aside-title">技能市场实时目录</p>
           <dl class="hero-metrics">
             <div>
               <dt id="release-count">0</dt>
@@ -66,17 +71,50 @@
               <dd>企业认证</dd>
             </div>
           </dl>
-          <p class="hero-policy">可调用不等于可安装。完整包分发与企业生产仍需许可证、Eval 和双人终审。</p>
+          <p class="hero-policy">可调用不等于可安装。预设技能先进入可发现目录；在线调用、企业授权和完整包安装继续分层开放。</p>
         </aside>
+      </div>
+    </section>
+
+    <section class="steward-section" id="steward" aria-labelledby="steward-title">
+      <div class="section-shell steward-layout">
+        <div class="steward-copy">
+          <p class="eyebrow">技能管家 Agent</p>
+          <h2 id="steward-title">不是让人翻目录，而是让 Agent 理解工作</h2>
+          <p>技能可以是被调用的模块能力，不一定需要打开。技能管家先解释任务，再组合候选技能，确认授权边界后生成工作台任务草案。</p>
+          <div class="steward-steps" aria-label="技能管家工作流程">
+            <span>理解需求</span><span>匹配技能</span><span>解释依据</span><span>进入工作台</span>
+          </div>
+          <a class="button button-primary" href="https://code.zaowuyun.com/?agent=skill-steward">打开造物云工作台</a>
+        </div>
+        <div class="steward-demo" aria-label="技能管家推荐示例">
+          <div class="demo-request"><span>企业任务</span><strong>帮我分析新产品的市场机会，并形成汇报</strong></div>
+          <div class="demo-response">
+            <span>技能管家建议</span>
+            <strong>市场研究 + 中文公文写作</strong>
+            <p>先完成机会洞察，再将结论整理为可汇报材料。进入工作台前会再次确认版本和授权。</p>
+          </div>
+          <div class="demo-boundary">当前为推荐与任务草案，不自动购买、不自动执行。</div>
+        </div>
+      </div>
+    </section>
+
+    <section class="shelves-section" id="shelves" aria-labelledby="shelves-title">
+      <div class="section-shell">
+        <div class="section-heading shelf-section-heading">
+          <div><p class="eyebrow">可信推荐</p><h2 id="shelves-title">值得先试的技能</h2></div>
+          <p>推荐基于任务匹配、调用状态和证据，不用下载量替代质量判断。</p>
+        </div>
+        <div class="shelf-list" id="shelf-list" aria-live="polite"></div>
       </div>
     </section>
 
     <section class="market-section" id="catalog" aria-labelledby="catalog-title">
       <div class="section-shell">
         <div class="section-heading">
-          <p class="eyebrow">能力市场</p>
-          <h2 id="catalog-title">按任务选择技能</h2>
-          <p>像选择企业软件一样，先看场景、创作者和获取方式，再看证据与适用边界。</p>
+          <p class="eyebrow">能力目录</p>
+          <h2 id="catalog-title">浏览全部技能</h2>
+          <p>查看场景、创作者、定价与授权方式，再进入详情确认证据和使用边界。</p>
         </div>
 
         <div class="market-layout">
@@ -159,8 +197,8 @@
       <div class="section-shell publish-layout">
         <div class="publish-copy">
           <p class="eyebrow">技能供给</p>
-          <h2 id="publish-title">把技能提交到造物云</h2>
-          <p>平台可先收录清晰、安全的技能说明；具备明确调用方式后进入可调用层；完整包通过许可、Eval 与终审后再开放安装。</p>
+          <h2 id="publish-title">创作者和企业都能建设技能</h2>
+          <p>创作者可以发布技能与应用；企业可以开发私有技能、购买授权并进行合规二创。公开市场和企业私有能力库保持清晰边界。</p>
           <a class="button button-primary" href="mailto:contact@zaowuyun.com?subject=%E7%94%B3%E8%AF%B7%E5%8F%91%E5%B8%83%E9%80%A0%E7%89%A9%E4%BA%91%E6%8A%80%E8%83%BD">申请发布技能</a>
         </div>
         <div class="publish-flow" aria-label="技能发布流程">
